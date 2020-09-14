@@ -1,0 +1,218 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+
+.home {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    &-filter {
+        position: absolute;
+        bottom: 0;
+        height: 10vh;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+}
+
+.banner {
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-clouds {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        & img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            max-width: 100%;
+            animation: cloud calc(3s * var(--i)) linear infinite;
+            @include md {
+                bottom: -5%;
+            }
+            @include xl {
+                bottom: -25%;
+            }
+        }
+    }
+}
+
+.granim {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    &-canvas {
+        position: absolute;
+        bottom: -20%;
+        height: 120%;
+        width: 100%;
+    }
+}
+
+.svg {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    margin-top: -3rem;
+    @include sm {
+        margin-top: -5rem;
+    }
+    @include lg {
+        margin-top: -6rem;
+    }
+    svg {
+        path:nth-child(1) {
+            stroke-dasharray: 790;
+            stroke-dashoffset: 790;
+            animation: write-svg 2s ease forwards,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(2) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards .3s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(3) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards .6s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(4) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards .9s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(5) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 1.2s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(6) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 1.5s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(7) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 1.8s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(8) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 2.3s,
+                       fill-svg 3s ease forwards 4s;
+        }
+
+        path:nth-child(9) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 2.4s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(10) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 2.7s,
+                       fill-svg 3s ease forwards 4s;
+        }
+        path:nth-child(11) {
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: write-svg 2s ease forwards 3s,
+                       fill-svg 3s ease forwards 4s;
+        }
+    }
+}
+
+.typing {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: opacity-div 3s ease-in forwards 4s;
+    &-text {
+        font-size: 1.5rem;
+        color: $light;
+        @include sm {
+            font-size: 2.5rem;
+        }
+        @include lg {
+            font-size: 4rem;
+        }
+    }
+}
+
+.scrollDown {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    animation: opacity-div 3s ease-in forwards 4s;
+    a span {
+        cursor: pointer;
+        position: absolute;
+        bottom: 2%;
+        left: 50%;
+        width: 20px;
+        height: 30px;
+        transform: translateX(-50%);
+        border: 1px solid $primary;
+        opacity: .6;
+        border-radius: 50px;
+        transition: .3s ease;
+        @include sm {
+            width: 30px;
+            height: 50px;
+        }
+        &:hover {
+            transform: translateX(-50%)
+            scale(1.1);
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin-left: -3px;
+            background: $primary;
+            border-radius: 100%;
+            animation: scroll-down 2s infinite;
+            @include sm {
+                top: 10px;
+                animation: scroll-down-lg 2s infinite;
+            }
+        }
+    }
+}

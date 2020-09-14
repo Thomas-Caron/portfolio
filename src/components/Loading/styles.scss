@@ -1,0 +1,50 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+
+.loading {
+    height: 100vh;
+    position: relative;
+    background: $primary;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 800px;
+        height: 1000px;
+        background: $secondary-gradient;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 40%;
+        animation: fill-wave 3s ease-in-out infinite;
+        z-index: 0;
+        @include sm {
+            width: 1000px;
+            height: 1000px;
+        }
+        @include md {
+            width: 2000px;
+            height: 2000px;
+        }
+        @include lg {
+            width: 2500px;
+            height: 2500px;
+            animation: fill-wave-lg 3s ease-in-out infinite;
+        }
+        @include xl {
+            width: 3000px;
+            height: 3000px;
+        }
+    }
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 100%;
+        width: auto;
+        polygon {
+            fill: $light;
+        }
+    }
+}

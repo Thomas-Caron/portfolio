@@ -1,0 +1,341 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+
+.scrollUp {
+    z-index: 3;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .4s ease-out,
+                opacity .4s ease-out;
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility .4s ease-out,
+                    opacity .4s ease-out;
+    }
+    a {
+        cursor: pointer;
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        padding: .8rem .5rem;
+        background: $primary-opacity;
+        border: solid 1px $light-opacity;
+        border-radius: 5px;
+        transition: .3s ease;
+        @include md {
+            padding: 1.2rem .8rem;
+        }
+        &:hover {
+            background: $primary;
+            border: solid 1px $secondary;
+        }
+        &:hover path {
+            fill: $secondary;
+        }
+        svg {
+            animation: scroll-up .6s ease infinite alternate;
+            @include md {
+                animation: scroll-up-lg .6s ease infinite alternate;
+            }
+            path {
+                fill: $light;
+                transition: .3s ease;
+            }
+        }
+    }
+}
+
+.social-network {
+    z-index: 3;
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    opacity: 0;
+    animation: opacity-div 3s ease-in forwards 4s;
+    input {
+        display: none;
+        &:checked ~ .rocket .rocket-svg {
+            animation: rocket-open 1s ease forwards;
+        }
+        &:checked ~ .rocket a {
+            z-index: 0;
+            animation: socialnetwork-opacity 1s ease forwards;
+            transition: opacity .3s ease .5s;
+        }
+    }
+    .rocket {
+        &-svg {
+            height: 2.5rem;
+            width: auto;
+            transform: rotate(-45deg);
+            fill: $primary-opacity;
+            stroke: $light;
+            stroke-width: 5px;
+            animation: rocket-close 1s ease forwards;
+            animation-direction: reverse;
+            transition: .3s ease;
+            &:hover {
+                stroke: $secondary;
+                fill: transparent;
+            }
+        }
+        a {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1000;
+            animation: socialnetwork-none 1s ease forwards;
+            animation-direction: reverse;
+            &:nth-of-type(1) {
+                bottom: 20%;
+                
+            }
+            &:nth-of-type(2) {
+                bottom: 130%;
+            }
+            & .social-network-svg {
+                height: 2.5rem;
+                width: auto;
+                border-radius: 50%;
+                border: solid 1px $light-opacity;
+                background: $light-opacity;
+                transition: .3s ease;
+                &:hover {
+                    border: solid 1px $secondary-opacity;
+                    background: $secondary-opacity;
+                }
+                path {
+                    fill: $primary-opacity;
+                }
+            }
+        }
+    }
+}
+
+.navbar {
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    opacity: 0;
+    animation: opacity-div 3s ease-in forwards 4s;
+    transition: background .4s ease-out,
+                height .4s ease-out;
+    @include md {
+        height: 13%;
+    }
+    &.scrolled {
+        background: $primary-opacity;
+        height: 10%;
+        transition: background .4s ease-out,
+                    height .4s ease-out;
+    }
+    &-logo {
+        z-index: 3;
+        position: absolute;
+        height: 100%;
+        svg {
+            cursor: pointer;
+            width: auto;
+            height: 100%;
+            padding: 1rem 0;
+            margin-left: 2rem;
+            @include sm {
+                margin-left: 3rem;
+            }
+            @include lg {
+                margin-left: 4rem;
+            }
+            &:hover polygon {
+                fill: transparent;
+                stroke: $secondary;
+            }
+            polygon {
+                stroke-width: 8px;
+                fill: $light;
+                transition: .3s ease;
+            }
+        }
+    }
+    &-burger {
+        display: none;
+        position: absolute;
+        &:checked ~ .navbar-links {
+            opacity: 1;
+            clip-path: circle(100% at center);
+            a {
+                opacity: 1;
+                transform: translateX(0);
+                transition: opacity .4s ease-in-out 1s,
+                            transform .6s cubic-bezier(.175, .885, .32, 1.275) 1s;
+                &:nth-of-type(1) {
+                    transition-delay: .7s;
+                }
+                &:nth-of-type(2) {
+                    transition-delay: .8s;
+                }
+                &:nth-of-type(3) {
+                    transition-delay: .9s;
+                }
+                &:nth-of-type(4) {
+                    transition-delay: 1s;
+                }
+            }
+        }
+        &:checked ~ .navbar-icon {
+            animation: pulse 1s;
+            border-radius: 50%;
+            span {
+                animation: open-mid .8s forwards;
+                &::before {
+                    animation: open-top .8s forwards;
+                }
+                &::after {
+                    animation: open-btm .8s forwards;
+                }
+            }
+        }
+    }
+    &-icon {
+        z-index: 3;
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px 20px;
+        cursor: pointer;
+        @include sm {
+            display: none
+        }
+        span {
+            position: absolute;
+            top: calc(50% - 2px);
+            left: calc(50% - 15px);
+            background: $light;
+            height: 4px;
+            width: 30px;
+            border-radius: 4px;
+            transition: background .8s ease;
+            animation: close-mid .8s backwards;
+            animation-direction: reverse;
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-radius: 4px;
+                background: $light;
+                transition: background .8s ease;
+            }
+            &::before {
+                transform: translateY(-10px);
+                animation: close-top .8s backwards;
+                animation-direction: reverse;
+            }
+            &::after {
+                transform: translateY(10px);
+                animation: close-btm .8s backwards;
+                animation-direction: reverse;
+            }
+        }
+    }
+    &-links {
+        position: absolute;
+        padding: 10rem 0;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        font-size: 2rem;
+        color: $light;
+        background: $primary;
+        clip-path: circle(200px at top right);
+        transition: opacity .8s .5s,
+                    clip-path 1s .5s;
+        @include sm {
+            padding: 0;
+            opacity: 1;
+            height: 100%;
+            flex-direction: row;
+            justify-content: flex-end;
+            font-size: 1rem;
+            background: none;
+            clip-path: inherit;
+            padding-right: 3rem;
+        }
+        @include lg {
+            padding-right: 4rem;
+        }
+    }
+    &-link {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 1rem .5rem;
+        margin: .2rem;
+        opacity: 0;
+        transform: translateX(100%);
+        @include sm {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        @include lg {
+            font-size: 1.2rem;
+        }
+        &::before {
+            content: '';
+            z-index: 0;
+            position: absolute;
+            left: 0;
+            top: 27%;
+            height: 15%;
+            width: 0;
+            background: $secondary-gradient;
+            transition: .5s ease;
+        }
+        &::after {
+            content: '';
+            z-index: 0;
+            position: absolute;
+            left: 0;
+            bottom: 27%;
+            height: 15%;
+            width: 0;
+            background: $secondary-gradient;
+            transition: .5s ease;
+        }
+        &:hover {
+            color: $light;
+        }
+        &:hover:after, &:hover:before, &:hover span:nth-of-type(1)::before {
+            width: 100%;
+        }
+        span {
+            &:nth-of-type(1) {
+                &::before {
+                    content: '';
+                    z-index: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: 18%;
+                    width: 0;
+                    background: $secondary-gradient;
+                    transition: .5s ease;
+                }
+            }
+            &:nth-of-type(2) {
+                z-index: 1;
+            }
+        }
+    }
+}

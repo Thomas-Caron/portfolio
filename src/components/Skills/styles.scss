@@ -1,0 +1,72 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+
+.skills {
+    position: relative;
+    h2 {
+        color: $dark;
+    }
+    svg {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        polygon {
+            fill: $primary;
+        }
+    }
+    &-progressbar {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-around;
+        padding: 2rem;
+        @include sm {
+            padding-bottom: 4rem;
+        }
+        @include md {
+            padding-bottom: 5.5rem;
+        }
+        @include lg {
+            padding-bottom: 6.5rem;
+        }
+        @include xl {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 10rem;
+        }
+        .progressbar {
+            position: relative;
+            width: 50%;
+            margin-bottom: 1rem;
+            @include lg {
+                width: 20%;
+            }
+            &-progress {
+                width: 100%;
+                svg {
+                    position: relative;
+                    height: auto;
+                    width: 10rem;
+                    margin: 0 auto;
+                }
+            }
+            img {
+                position: absolute;
+                bottom: 34.6%;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 8.3rem;
+                border-radius: 50%;
+            }
+            p {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1rem;
+                height: 3rem;
+            }
+        }
+    }
+}

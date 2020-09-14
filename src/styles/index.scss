@@ -1,0 +1,9 @@
+@use 'reset';
+@use 'vars';
+@use 'colors';
+@use 'mixin';
+@use 'fonts';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}

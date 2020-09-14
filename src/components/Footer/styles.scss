@@ -1,0 +1,16 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+
+footer {
+    background: $primary;
+    text-align: center;
+    padding: .5rem 0 1rem 0;
+    @include sm {
+        padding: 0 0 1rem 0;
+        padding-bottom: 1rem;
+    }
+    p {
+        color: $light;
+    }
+}

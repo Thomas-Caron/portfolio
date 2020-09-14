@@ -1,0 +1,88 @@
+@import '../../styles/mixin';
+@import '../../styles/keyframes';
+@import '../../styles/colors';
+@import '../../styles//button';
+
+.portfolio {
+    background: $primary;
+    h2 {
+        color: $light;
+    }
+    &-cards {
+        padding: 3rem 1rem 0 1rem;
+        @include sm {
+            padding: 3rem 3rem 0 3rem;
+        }
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        @include md {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        @include lg {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+    .flippy {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        width: 80%;
+        @include md {
+            width: 60%;
+        }
+        @include lg {
+            width: 45%;
+        }
+        &-card {
+            border: solid 2px $secondary;
+            border-radius: .3rem;
+            color: $light;
+            &.flippy-front {
+                padding: 0;
+                img {
+                    max-width: 100%;
+                    border-radius: .1rem .1rem 0 0;
+                    filter: grayscale(100%);
+                    transition: .3s ease;
+                    &:hover {
+                        filter: grayscale(0%);
+                    }
+                }
+            }
+            &.flippy-back {
+                overflow-y: auto;
+                padding: 3rem 2rem 1rem 2rem;
+                svg {
+                    position: absolute;
+                    right: 1rem;
+                    top: 1rem;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    path {
+                        transition: .3s ease;
+                        &:hover {
+                            fill: $secondary;
+                        }
+                    }
+                }
+                h3 {
+                    margin-bottom: 2rem;
+                    text-align: center;
+                }
+                p {
+                    margin-bottom: 2rem;
+                    &:nth-of-type(1) {
+                        
+                    }
+                    &:nth-of-type(2) {
+                    }
+                    &:nth-of-type(3) {
+                        margin-left: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
