@@ -13,7 +13,6 @@
 
 # misc
 /sandwicherie
-/thomas-caron.pem
 .DS_Store
 .env.local
 .env.development.local
