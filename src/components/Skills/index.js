@@ -33,7 +33,7 @@ const Skills = () => {
                 <Progressbar progress="80" image={Bootstrap} alt="logo bootstrap" text="BOOTSTRAP" />
                 <Progressbar progress="65" image={Git} alt="logo git" text="GIT &amp; GITHUB" />
                 <Progressbar progress="75" image={Php} alt="logo php" text="MVC, POO, CRUD, API" />
-                <Progressbar progress="65" image={Sql} alt="logo sql" text="ADMINER, PHPMYADMIN, MONGODB" />
+                <Progressbar progress="65" image={Sql} alt="logo sql" text="ADMINER, PHPMYADMIN, MONGODB(noSQL)" />
                 <Progressbar progress="70" image={Javascript} alt="logo javascript" text="JAVASCRIPT, ES6" />
                 <Progressbar progress="80" image={ReactJS} alt="logo react" text="REACT.JS &amp; REDUX" />
                 <Progressbar progress="40" image={Node} alt="logo node" text="NODE.JS &amp; EXPRESS.JS" />
