@@ -9,7 +9,7 @@ import AOS from 'aos';
 import './styles.scss';
 
 //! == Composant ==
-const CardFlippy = ({ image, alt, title, text, techno, link }) => {
+const CardFlippy = ({ logo, altLogo, image, altImage, title, text, techno, link }) => {
     AOS.init();
     return (
         <div className="flippy" data-aos="fade-up">
@@ -19,7 +19,11 @@ const CardFlippy = ({ image, alt, title, text, techno, link }) => {
                 flipDirection="vertical"
             >
                 <FrontSide>
-                    <img src={image} alt={alt} />
+                    <div className="flippy-front-detail">
+                        <h4>{title}</h4>
+                        <img src={logo} alt={altLogo}/>
+                    </div>
+                    <img src={image} alt={altImage} />
                     <button>En savoir plus</button>
                 </FrontSide>
                 <BackSide>
